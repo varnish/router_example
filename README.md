@@ -7,4 +7,7 @@ https://docs.varnish-software.com/varnish-controller/examples/routing/
 The video example included in this repo is the free Sintel movie.
 
 Website: https://durian.blender.org/
+
 Information: https://en.wikipedia.org/wiki/Sintel
+
+License Information: https://durian.blender.org/sharing/

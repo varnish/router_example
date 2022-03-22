@@ -1,3 +1,5 @@
+export VARNISH_CONTROLLER_CLI_PASSWORD=test
+vcli='docker run --mount source=router_example,target=/home/varnish/ --network router_example_default --rm -it quay.io/varnish-software/varnish-controller-cli:latest'
 vcli login http://api.example.com:8002 -u test
 vcli tag add prod
 vcli agent tag 1,2 -t 1 -y
