@@ -140,8 +140,6 @@ services:
     depends_on:
       - nats
       - brainz
-    ports:
-        - "8002:8002"
     networks:
       default:
         ipv4_address: 172.31.0.206
