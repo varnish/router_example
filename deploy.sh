@@ -1,7 +1,7 @@
 #!/bin/bash
 dir=`pwd`
 vcli="docker run -v ${dir}:/tmpdir/ -e VARNISH_CONTROLLER_CLI_PASSWORD=test --mount source=router_example,target=/home/varnish/ --network router_example_default --rm -it quay.io/varnish-software/varnish-controller-cli:latest"
-${vcli} login http://api.example.com:8002 -u test
+${vcli} login http://172.31.0.206:8002 -u test
 ${vcli} tag add prod
 ${vcli} agent tag 1,2 -t 1 -y
 ${vcli} file add web.vcl /tmpdir/web.vcl
