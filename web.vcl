@@ -9,7 +9,6 @@ sub vcl_recv {
     if (req.url ~ "/ping") {
         return (synth(200, "OK"));
     }
-    set req.url = regsub(req.url, "/([^/]*)/", "/");
 }
 
 sub vcl_backend_response {
