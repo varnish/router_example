@@ -3,6 +3,7 @@ services:
   origin:
     image: "httpd:2-alpine"
     restart: always
+    hostname: origin.example.com
     volumes:
       - ./website/:/usr/local/apache2/htdocs
     networks:
@@ -12,7 +13,7 @@ services:
   varnish1:
      container_name: varnish1
      image: "quay.io/varnish-software/varnish-plus:latest"
-     hostname: varnish1
+     hostname: cache1.example.com
      restart: always
      volumes:
          - type: "volume"
@@ -31,7 +32,7 @@ services:
   varnish2:
      container_name: varnish2
      image: "quay.io/varnish-software/varnish-plus:latest"
-     hostname: varnish2
+     hostname: cache2.example.com
      restart: always
      volumes:
          - type: "volume"
@@ -89,7 +90,7 @@ services:
       - "VARNISH_CONTROLLER_AGENT_NAME=server1"
       - "VARNISH_CONTROLLER_BASE_DIR=/etc/varnish/agents/"
       - "VARNISH_CONTROLLER_NATS_SERVER=nats:4222"
-      - "VARNISH_CONTROLLER_VARNISH_NAME=varnish1"
+      - "VARNISH_CONTROLLER_VARNISH_NAME=cache1.example.com"
       - "VARNISH_CONTROLLER_VARNISH_HOST=172.31.0.201:6081"
       - "VARNISH_CONTROLLER_BASE_URL=http://cache1.example.com"
       - "VARNISH_CONTROLLER_IPV6=::1"
@@ -119,7 +120,7 @@ services:
       - "VARNISH_CONTROLLER_AGENT_NAME=server2"
       - "VARNISH_CONTROLLER_BASE_DIR=/etc/varnish/agents/"
       - "VARNISH_CONTROLLER_NATS_SERVER=nats:4222"
-      - "VARNISH_CONTROLLER_VARNISH_NAME=varnish2"
+      - "VARNISH_CONTROLLER_VARNISH_NAME=cache2.example.com"
       - "VARNISH_CONTROLLER_VARNISH_HOST=172.31.0.202:6081"
       - "VARNISH_CONTROLLER_BASE_URL=http://cache2.example.com"
       - "VARNISH_CONTROLLER_IPV6=::1"
