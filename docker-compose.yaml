@@ -56,7 +56,6 @@ services:
         - type: "volume"
           source: vcontroller
           target: /etc/varnish
-        - /etc/hosts:/etc/hosts
     environment:
       - "VARNISH_CONTROLLER_ROUTER_NAME=router"
       - "VARNISH_CONTROLLER_BASE_DIR=/etc/varnish/routers/"
